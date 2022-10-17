@@ -17,6 +17,7 @@ class RouteClass {
   static const String tutorial = "/tutorial";
   static const String signupForm = "/signform";
   static const String splashScreen = "/splashscreen";
+  static const String makemytrip = "/makemytrip";
 
   static const String screen1Argument = "screen 1";
   static const String screen2Argument = "screen 2";

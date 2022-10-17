@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutterlearn/util/bloc/block_builder.dart';
 import 'package:flutterlearn/module/route/route.dart';
 import 'package:flutterlearn/module/signup/controller/signup_bloc.dart';
-import 'package:flutterlearn/module/signup/view/profile_view.dart';
 import 'package:flutterlearn/module/signup/view_model/signup_model.dart';
 import 'package:flutterlearn/util/custom_widget/snackbar.dart';
 import 'package:flutterlearn/util/helper/app_color.dart';
@@ -124,9 +123,9 @@ class SignupState extends State<SignupForm> {
   }
 
   void _pushPage() {
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      RouteClass().getTutorial(),
+      RouteClass.makemytrip,
     );
   }
 

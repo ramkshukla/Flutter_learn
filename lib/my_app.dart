@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlearn/module/makemytrip/buzz_screen.dart';
 import 'package:flutterlearn/module/splash/splash_screen.dart';
 import 'package:flutterlearn/module/tutorial/view/tutorial_screen.dart';
 import 'package:flutterlearn/util/helper/app_string.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
         routes: {
           RouteClass.splashScreen: (context) => const SplashScreen(),
           RouteClass.signupForm: (context) => const SignupForm(),
-          RouteClass.tutorial: (context) => const PageViewApp()
+          RouteClass.tutorial: (context) => const PageViewApp(),
+          RouteClass.makemytrip: (context) => const BuzzScreen()
         });
   }
 }
