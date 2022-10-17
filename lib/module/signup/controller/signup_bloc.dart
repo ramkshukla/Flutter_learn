@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutterlearn/module/bloc/block.dart';
+import 'package:flutterlearn/util/bloc/block.dart';
 import 'package:flutterlearn/module/signup/view_model/signup_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

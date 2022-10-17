@@ -2,7 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterlearn/module/bloc/block_builder.dart';
+import 'package:flutterlearn/util/bloc/block_builder.dart';
+import 'package:flutterlearn/module/route/route.dart';
 import 'package:flutterlearn/module/signup/controller/signup_bloc.dart';
 import 'package:flutterlearn/module/signup/view/profile_view.dart';
 import 'package:flutterlearn/module/signup/view_model/signup_model.dart';
@@ -125,13 +126,7 @@ class SignupState extends State<SignupForm> {
   void _pushPage() {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => ProfileScreen(
-          name: _nameController.text,
-          email: _emailController.text,
-          phone: _phoneController.text,
-        ),
-      ),
+      RouteClass().getTutorial(),
     );
   }
 

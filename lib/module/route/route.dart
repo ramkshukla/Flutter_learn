@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlearn/module/signup/view/signup_view.dart';
+import 'package:flutterlearn/module/tutorial/view/tutorial_screen.dart';
 
 import '../demo/screen_1.dart';
 import '../demo/screen_2.dart';
@@ -12,12 +14,33 @@ class RouteClass {
   static const String screen3 = "/screen3";
   static const String screen4 = "/screen4";
   static const String screen5 = "/screen5";
+  static const String tutorial = "/tutorial";
+  static const String signupForm = "/signform";
+  static const String splashScreen = "/splashscreen";
 
   static const String screen1Argument = "screen 1";
   static const String screen2Argument = "screen 2";
   static const String screen3Argument = "screen 3";
   static const String screen4Argument = "screen 4";
   static const String screen5Argument = "screen 5";
+  static const String tutorialArgument = "tutorial";
+  static const String signupArgument = "SignupForm";
+
+  MaterialPageRoute getSignupForm() {
+    return MaterialPageRoute(
+      builder: (context) => const SignupForm(),
+      settings: const RouteSettings(
+          name: RouteClass.signupForm, arguments: RouteClass.signupForm),
+    );
+  }
+
+  MaterialPageRoute getTutorial() {
+    return MaterialPageRoute(
+      builder: (context) => const PageViewApp(),
+      settings: const RouteSettings(
+          name: RouteClass.tutorial, arguments: RouteClass.tutorialArgument),
+    );
+  }
 
   MaterialPageRoute getScreen1() {
     return MaterialPageRoute(

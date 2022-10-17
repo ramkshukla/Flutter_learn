@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlearn/module/route/route.dart';
+import 'package:flutterlearn/util/sharedPreference/sharedPref.dart';
 import 'package:flutterlearn/module/tutorial/view/widgets/indicator_item.dart';
 import 'package:flutterlearn/util/helper/app_color.dart';
 import '../model/tutorial_model.dart';
@@ -90,11 +92,28 @@ class _PageViewApp extends State<StatefulWidget> {
                     Container(
                       margin: const EdgeInsets.only(bottom: 35),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          const Spacer(),
                           for (int i = 0; i < tutorialData.length; i++)
-                            IndicatorItems(isActive: i == _currentPage)
+                            IndicatorItems(isActive: i == _currentPage),
+                          const Spacer(),
+                          SizedBox(
+                            height: 15,
+                            width: 60,
+                            child: ElevatedButton(
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll<Color>(Colors.red),
+                              ),
+                              onPressed: () {
+                                PrefHelper.setIsTutorialViewed(true);
+                                Navigator.push(
+                                    context, RouteClass().getSignupForm());
+                              },
+                              child: const Text("Skip"),
+                            ),
+                          )
                         ],
                       ),
                     )
@@ -112,30 +131,32 @@ class _PageViewApp extends State<StatefulWidget> {
     return Container(
       color: AppColor.containerColor,
       padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            tutorialData[index].appName,
-          ),
-          Text(
-            tutorialData[index].title,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
+      child: Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              tutorialData[index].appName,
             ),
-            textAlign: TextAlign.left,
-          ),
-          Text(
-            tutorialData[index].description,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
+            Text(
+              tutorialData[index].title,
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.left,
             ),
-          ),
-          Image(image: AssetImage(tutorialData[index].image)),
-        ],
+            Text(
+              tutorialData[index].description,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Image(image: AssetImage(tutorialData[index].image)),
+          ],
+        ),
       ),
     );
   }
