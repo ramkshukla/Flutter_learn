@@ -80,6 +80,7 @@ class SignupState extends State<SignupForm> {
       onPressed: () async {
         await _signupBloc.googleLogin();
         if (_signupBloc.state.appState == AppState.success) {
+          // Navigator.pushNamed(context, RouteClass.makemytrip);
           debugPrint(_signupBloc.state.responseModel?.statusCode);
           debugPrint(_signupBloc.state.responseModel?.statusMessage);
         } else {

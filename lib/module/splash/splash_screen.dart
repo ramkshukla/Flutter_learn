@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutterlearn/module/route/route.dart';
-import 'package:flutterlearn/util/sharedPreference/sharedPref.dart';
+
+import '../../util/sharedPreference/shared_pref.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

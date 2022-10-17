@@ -26,9 +26,9 @@ class _BuzzScreenState extends State<BuzzScreen> {
 
   final List<String> moviewImages = <String>[
     "assets/images/chhapak.jpg",
-    "assets/images/dilwale.jpg",
-    "assets/images/Maqbool.jpeg",
-    "assets/images/astro_moon.png"
+    "assets/images/ahmet-yalcinkaya-aNrRsB2wLDk-unsplash.jpg",
+    "assets/images/krists-luhaers-AtPWnYNDJnM-unsplash.jpg",
+    "assets/images/timothy-eberly-dTLlhgeEJWg-unsplash.jpg"
   ];
 
   @override
@@ -81,25 +81,67 @@ class _BuzzScreenState extends State<BuzzScreen> {
             ),
             const Divider(),
             Container(
-              height: 400,
+              margin: const EdgeInsets.all(15),
+              height: 500,
               color: Colors.white,
               child: ListView.builder(
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
-                      Image.asset(
-                        moviewImages[index],
-                        width: 200,
-                        height: 200,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(25), // Image border
+                        child: SizedBox.fromSize(
+                          size: const Size.fromRadius(48), // Image radius
+                          child: Image.asset(
+                            moviewImages[index],
+                            height: 200,
+                            width: 200,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
                       ),
                       Column(
-                        children: const [
-                          Text(
-                            "Should You Watch movie ?",
-                            style: TextStyle(fontSize: 15),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "Should You Watch movie ?",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              SizedBox(
+                                width: 60,
+                              ),
+                              Icon(
+                                Icons.bookmark_border,
+                              )
+                            ],
                           ),
-                          Divider()
+                          const Divider(),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 20.0,
+                                height: 20.0,
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage(moviewImages[index]),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              const Text("18 Mins ago"),
+                              const SizedBox(width: 70),
+                              const Icon(Icons.favorite_border_outlined),
+                              const SizedBox(width: 5),
+                              const Text("9"),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.share)
+                            ],
+                          )
                         ],
                       )
                     ],
@@ -110,6 +152,16 @@ class _BuzzScreenState extends State<BuzzScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.bolt), label: 'Buzz'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.contact_mail), label: 'Profile'),
+        ],
+        currentIndex: 1,
+        selectedItemColor: Colors.red,
+      ),
     );
   }
 
@@ -119,21 +171,16 @@ class _BuzzScreenState extends State<BuzzScreen> {
       child: Column(
         children: [
           SizedBox(
-            width: 70.0,
-            height: 70.0,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ClipOval(
-                child: Image.asset(
-                  moviewImages[index],
-                  width: 100,
-                  height: 300,
-                ),
-              ),
-            ),
-          ),
+              width: 70.0,
+              height: 70.0,
+              child: CircleAvatar(
+                backgroundImage: AssetImage(moviewImages[index]),
+              )),
           const SizedBox(width: 5.0, height: 5.0),
-          Text(moviesName[index]),
+          Text(
+            moviesName[index],
+            style: const TextStyle(fontSize: 17),
+          ),
         ],
       ),
     );

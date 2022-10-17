@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterlearn/module/route/route.dart';
-import 'package:flutterlearn/util/sharedPreference/sharedPref.dart';
 import 'package:flutterlearn/module/tutorial/view/widgets/indicator_item.dart';
 import 'package:flutterlearn/util/helper/app_color.dart';
+import '../../../util/sharedPreference/shared_pref.dart';
 import '../model/tutorial_model.dart';
 import 'dart:async';
 
