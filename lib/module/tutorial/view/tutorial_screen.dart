@@ -79,49 +79,37 @@ class _PageViewApp extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
-            child: Stack(
-              alignment: AlignmentDirectional.bottomCenter,
+            child: _buildPageView(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 35),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _buildPageView(),
-                Stack(
-                  alignment: AlignmentDirectional.topCenter,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          const Spacer(),
-                          for (int i = 0; i < tutorialData.length; i++)
-                            IndicatorItems(isActive: i == _currentPage),
-                          const Spacer(),
-                          SizedBox(
-                            height: 15,
-                            width: 60,
-                            child: ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll<Color>(Colors.red),
-                              ),
-                              onPressed: () {
-                                PrefHelper.setIsTutorialViewed(true);
-                                Navigator.push(
-                                    context, RouteClass().getSignupForm());
-                              },
-                              child: const Text("Skip"),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                const Spacer(),
+                for (int i = 0; i < tutorialData.length; i++)
+                  IndicatorItems(isActive: i == _currentPage),
+                const Spacer(),
+                SizedBox(
+                  height: 15,
+                  width: 60,
+                  child: ElevatedButton(
+                    style: const ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll<Color>(Colors.red),
+                    ),
+                    onPressed: () {
+                      PrefHelper.setIsTutorialViewed(true);
+                      Navigator.push(context, RouteClass().getSignupForm());
+                    },
+                    child: const Text("Skip"),
+                  ),
+                )
               ],
             ),
-          ),
+          )
         ],
       ),
     );
@@ -131,32 +119,30 @@ class _PageViewApp extends State<StatefulWidget> {
     return Container(
       color: AppColor.containerColor,
       padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
-      child: Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              tutorialData[index].appName,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            tutorialData[index].appName,
+          ),
+          Text(
+            tutorialData[index].title,
+            style: const TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w600,
             ),
-            Text(
-              tutorialData[index].title,
-              style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w600,
-              ),
-              textAlign: TextAlign.left,
+            textAlign: TextAlign.left,
+          ),
+          Text(
+            tutorialData[index].description,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
             ),
-            Text(
-              tutorialData[index].description,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Image(image: AssetImage(tutorialData[index].image)),
-          ],
-        ),
+          ),
+          Image(image: AssetImage(tutorialData[index].image)),
+        ],
       ),
     );
   }
@@ -168,8 +154,8 @@ class _PageViewApp extends State<StatefulWidget> {
       itemBuilder: (context, index) => GestureDetector(
         onLongPressStart: (_) => _stopTimer(),
         onLongPressEnd: (_) => _startTimer(),
-        child: Container(
-          child: _buildPageViewData(_getRealIndex(index)),
+        child: _buildPageViewData(
+          _getRealIndex(index),
         ),
       ),
     );
